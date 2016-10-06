@@ -1,0 +1,14 @@
+---
+- hosts: appserver
+  user: root
+  tasks:
+       - name: stop the iptables -F
+         command: iptables -F
+       - name: status of the iptables
+         command: service iptables status
+       - name: stop the iptables service
+         command: service iptables stop
+       - name: after topping the service status of iptables
+         command: service iptables status
+       - include: selinuxchange.yml
+       - include: replaceorsethostname.yml
