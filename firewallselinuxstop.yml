@@ -1,6 +1,8 @@
 ---
 - hosts: appserver
   user: root
+  vars:
+      hostname: agent3.abc.com
   tasks:
        - name: stop the iptables -F
          command: iptables -F
@@ -10,5 +12,9 @@
          command: service iptables stop
        - name: after topping the service status of iptables
          command: service iptables status
-       - include: selinuxchange.yml
-       - include: replaceorsethostname.yml
+#       - name: i need to change selinux disable in managing system
+#        lineinfile: dest=/etc/sysconfig/selinux state=present create=yes regexp='SELINUX=.*' line='SELINUX=disabled'
+#       - name: set the hostname or replace hostname{{hostname}}:::{{ansible_hostname}}
+#         lineinfile: dest=/etc/sysconfig/network state=present create=yes regexp='HOSTNAME=.*' line='HOSTNAME={{hostname}}'
+       - include: selinuxchnge.yml
+       - include: rplcechnghostname.yml

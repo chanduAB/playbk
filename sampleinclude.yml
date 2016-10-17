@@ -1,0 +1,7 @@
+---
+- hosts: appserver
+  user: root
+  vars_files:
+     - var.yml
+  tasks:
+     - include: tasks/tasks.yml

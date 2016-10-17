@@ -9,3 +9,4 @@
        copy: src="index.html" dest="/var/www/html/index.html"
      - name: start httpd service 
        service: name=httpd state=restarted
+  #     delegate_to: 127.0.0.1

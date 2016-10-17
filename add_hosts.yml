@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: yes
+  user: root
+  tasks:
+     - name: ass host in group
+       add_host: name={{inventory_hostname}} groups=appserver
+     - name: debug groups
+       debug: var=groups

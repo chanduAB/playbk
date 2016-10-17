@@ -1,0 +1,3 @@
+---
+- name: yum install httpd
+  command: yum install -y {{pkg}}
