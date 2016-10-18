@@ -6,9 +6,9 @@
         yum: name=httpd state=installed
       - name: copy the file index.html
         copy: src=index.html dest=/var/www/html/index.html
-        delegate_to: 192.168.199.140
+#       delegate_to: 192.168.199.140
       - name: restart the httpd
         service: name=httpd state=restarted
       - name: install wget
-        command: yum remove -y wget
+        command: yum install -y wget
         delegate_to: 192.168.199.141

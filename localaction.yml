@@ -1,0 +1,10 @@
+---
+- hosts: appserver
+  user: root
+  tasks:
+#     - local_action: command echo "doing stuff needed to bring up host"
+#     - action: ping
+#       register: result
+#     - debug: var=result
+    - name: dosomething using local action
+      local_action: command ansible --version

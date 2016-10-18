@@ -1,0 +1,15 @@
+---
+- hosts: appserver
+  user: root
+  sudo: yes
+  tasks:
+     - name: install httpd
+       yum: name=httpd state=installed
+     - name: create a file in local index.html
+       local_action: command touch index.html
+     - name: after creation of file, copy the content into that file
+       local_action: copy content="this is content created by control machine" dest="/root/playbook/index.html"
+     - name: copy index.html
+       copy: src="index.html" dest="/var/www/html/index.html"
+     - name: start httpd service 
+       service: name=httpd state=restarted

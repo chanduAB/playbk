@@ -1,0 +1,11 @@
+---
+- hosts: appserver
+  user: root
+  tasks:
+     - name: create fake 'nologin' shell
+       file: path=/root/check state=touch
+     - name: create a file using touch
+       command: touch chandulucky
+     - local_action: command touch index.html
+#     - local_action: command echo "index html file creation in local" > index.html
+     - local_action: copy content="Contact me for assistance" dest=/root/playbook/index.html
